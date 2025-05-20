@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Get Free Twitter Followers - Instant & Safe</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+  
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .container {
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 16px;
+    max-width: 380px;
+    width: 100%;
+    padding: 30px 25px 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    text-align: center;
+  }
+  .logo {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #ffdd59;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 5px rgba(255, 221, 89, 0.7);
+  }
+  h1 {
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin: 0 0 15px;
+    color: #ffc947;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  p.tagline {
+    font-weight: 400;
+    font-size: 1rem;
+    margin-bottom: 30px;
+    color: #ffb87c;
+    line-height: 1.4;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    user-select: none;
+    color: #ffcc70;
+  }
+  input[type="text"], input[type="number"] {
+    background: #321414;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #fff;
+    transition: background 0.3s ease;
+    outline-offset: 3px;
+  }
+  input[type="text"]:focus, input[type="number"]:focus {
+    background: #4d1a1a;
+    outline: 3px solid #ffdd59;
+  }
+  button {
+    background: #ffb347;
+    border: none;
+    border-radius: 14px;
+    padding: 16px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #3a1a00;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    user-select: none;
+    box-shadow: 0 5px 15px rgba(255,179,71,0.6);
+  }
+  button:hover,
+  button:focus {
+    background: #ffa500;
+    box-shadow: 0 6px 18px rgba(255,165,0,0.8);
+  }
+  .info {
+    margin-top: 22px;
+    font-size: 0.9rem;
+    color: #ffc66d;
+    line-height: 1.4;
+  }
+  .message {
+    margin-top: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 12px 10px;
+    border-radius: 12px;
+    display: none;
+  }
+  .message.success {
+    background-color: #4caf50;
+    color: #e7f9ec;
+  }
+  .message.error {
+    background-color: #e94e4e;
+    color: #fdeaeb;
+  }
+  small {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.75rem;
+    color: #ffa847;
+    user-select: none;
+  }
+  @media (max-width: 400px) {
+    .container {
+      padding: 25px 20px 35px;
+    }
+  }
+</style>
+</head>
+<body>
+  <main class="container" role="main" aria-labelledby="main-title">
+    <div class="logo" aria-hidden="true">Ƒ</div>
+    <h1 id="main-title">Get Free Twitter Followers</h1>
+    <p class="tagline">Boost your Twitter presence instantly. No password required. Safe, secure & instant delivery!</p>
+    <form id="followers-form" autocomplete="off" aria-label="Get free Twitter followers form">
+      <label for="twitter-username">Twitter Username</label>
+      <input type="text" id="twitter-username" name="twitter-username" placeholder="@yourhandle" required pattern="^@?(\w){1,15}$" title="Enter your Twitter username without spaces, max 15 characters" inputmode="text" />
+      
+      <label for="followers-count">Number of Followers</label>
+      <input type="number" id="followers-count" name="followers-count" placeholder="e.g. 100" required min="10" max="1000" step="10" />
+      
+      <button type="submit" aria-label="Get free followers now">Get Followers Now</button>
+      <small>Choose between 10 and 1000 followers</small>
+    </form>
+    <div id="message" class="message" role="alert" aria-live="polite"></div>
+    <p class="info">* We respect your privacy. This service does not ask for your password and is 100% safe.</p>
+  </main>
+
+<script>
+  const form = document.getElementById('followers-form');
+  const messageEl = document.getElementById('message');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    messageEl.style.display = 'none';
+    messageEl.className = 'message';
+
+    const usernameInput = form['twitter-username'];
+    const followersInput = form['followers-count'];
+    const username = usernameInput.value.trim();
+    const followers = parseInt(followersInput.value, 10);
+
+    // Validate username pattern (already constrained by pattern attribute, but extra check)
+    const usernamePattern = /^@?(\w){1,15}$/;
+    if (!usernamePattern.test(username)) {
+      setMessage('Please enter a valid Twitter username (1-15 characters, letters, numbers or underscores)', 'error');
+      usernameInput.focus();
+      return;
+    }
+
+    if (followers < 10 || followers > 1000) {
+      setMessage('Please choose a number of followers between 10 and 1000', 'error');
+      followersInput.focus();
+      return;
+    }
+
+    // Simulate request delay
+    setMessage('Requesting your followers now. Please wait...', 'success');
+    form.querySelector('button').disabled = true;
+
+    setTimeout(() => {
+      form.querySelector('button').disabled = false;
+      setMessage(`Success! ${followers} followers will be added to ${username.startsWith('@') ? username : '@' + username} shortly.`, 'success');
+      form.reset();
+      usernameInput.focus();
+    }, 2500);
+  });
+
+  function setMessage(text, type) {
+    messageEl.textContent = text;
+    messageEl.className = 'message ' + type;
+    messageEl.style.display = 'block';
+  }
+</script>
+</body>
+</html>
